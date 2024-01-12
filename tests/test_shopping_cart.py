@@ -5,8 +5,7 @@ import allure
 import requests
 from allure_commons._allure import step
 from allure_commons.types import AttachmentType
-from aliexpress_ru.utils import load_schema
-from selene import browser
+from aliexpress_ru.utils.load_shema import load_path
 
 base_url = 'https://aliexpress.ru'
 
@@ -34,7 +33,7 @@ def aliexpress_api_post(url, **kwargs):
 
 def test_shopping_cart(browser_setup):
 
-    schema = load_schema.load_path("shopping_cart.json")
+    schema = load_path("shopping_cart.json")
     result = aliexpress_api_post('/aer-jsonapi/v2/cart/count')
     # cookie = result.cookies.get("JSESSIONID")
 
@@ -56,7 +55,7 @@ def test_shopping_cart(browser_setup):
 
 def test_shopping_cart_with_product(browser_setup):
 
-    schema = load_schema.load_path("shopping_cart.json")
+    schema = load_path("shopping_cart.json")
     result = aliexpress_api_post('/aer-jsonapi/v2/cart/items/add?_bx-v=2.5.8')
     # cookie = result.cookies.get("JSESSIONID")
 
